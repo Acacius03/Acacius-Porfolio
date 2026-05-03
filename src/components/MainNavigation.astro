@@ -1,0 +1,46 @@
+---
+
+---
+
+<style>
+    nav {
+        position: fixed;
+        top: 0;
+        inset-inline: 0;
+
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+    }
+
+    nav a {
+        text-decoration: none;
+
+        &#brand-name {
+            background-color: hsl(0 0 100 / 0.05);
+
+            margin-right: auto;
+            border-radius: 1000px;
+            padding: 0.5rem 1.25rem;
+
+            font-size: 2rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        &.nav-links {
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
+
+            &:hover {
+                background-color: hsl(0 0 100 / 0.02);
+            }
+        }
+    }
+</style>
+<nav>
+    <a id="brand-name" href="/">ACACIUS</a>
+
+    <a class="nav-links" href="/">Home</a>
+    <a class="nav-links" href="/about">About</a>
+</nav>

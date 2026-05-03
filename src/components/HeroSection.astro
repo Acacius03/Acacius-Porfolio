@@ -1,0 +1,108 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import GitHubIcon from "../assets/icons/github.svg";
+import LinkedInIcon from "../assets/icons/linkedin.svg";
+---
+
+<style>
+    #hero-section {
+        height: 100dvh;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    #hero-section > .wrapper:first-of-type {
+        margin-block: auto;
+    }
+
+    #hero-section > .social-icons {
+        & > * {
+            background-color: hsl(0 0 100 / 0.1);
+            width: 5rem;
+            height: 5rem;
+            border-radius: calc(infinity * 1px);
+            padding: 0.5rem;
+
+            fill: hsl(0 0 46);
+        }
+    }
+
+    #hero-section h1 {
+        font-size: 6rem;
+    }
+
+    #hero-content {
+        font-size: 2rem;
+        line-height: 1.15;
+
+        margin-bottom: 1.5rem;
+    }
+
+    div#text-rotator {
+        display: flex;
+        flex-direction: column;
+
+        color: var(--color-secondary);
+
+        height: calc(1em * 1.15);
+        overflow: hidden;
+
+        & span {
+            animation: slide-up 6000ms ease-in-out infinite;
+        }
+    }
+
+    .glow {
+        box-shadow: 0px 0px 12px 0px hsl(0 0 67 / 0.05);
+
+        &:hover {
+            box-shadow: 0px 0px 12px 0px hsl(0 0 67 / 0.2);
+        }
+    }
+
+    @keyframes slide-up {
+        /* Show 1st */
+        0%,
+        30% {
+            transform: translateY(0);
+        }
+        /* Slide to 2nd */
+        33%,
+        63% {
+            transform: translateY(-100%);
+        }
+        /* Slide to 3rd */
+        66%,
+        97% {
+            transform: translateY(-200%);
+        }
+    }
+</style>
+
+<section id="hero-section">
+    <div class="wrapper">
+        <h1>Hi! I'm Acacius</h1>
+
+        <div id="hero-content">
+            <p>
+                Creating Digital Experiences
+                <span class="text-secondary"> Through </span>
+                <br />
+                <div id="text-rotator">
+                    <span>Games</span>
+                    <span>Apps</span>
+                    <span>Websites</span>
+                </div>
+            </p>
+        </div>
+
+        <Button theme="primary" shape="pill" size="lg" classNames="glow">
+            See My Work
+        </Button>
+    </div>
+    <div class="wrapper social-icons">
+        <GitHubIcon />
+        <LinkedInIcon />
+    </div>
+</section>
