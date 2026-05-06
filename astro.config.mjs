@@ -1,8 +1,6 @@
 import { defineConfig, fontProviders } from "astro/config";
 
 export default defineConfig({
-  site: "https://acacius03.github.io",
-  base: "/Acacius-Porfolio",
   fonts: [
     {
       provider: fontProviders.local(),
