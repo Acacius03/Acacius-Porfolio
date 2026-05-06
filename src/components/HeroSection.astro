@@ -1,13 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import Button from "./Button.astro";
+import ButtonLink from "./ButtonLink.astro";
 import GitHubIcon from "../assets/icons/github.svg";
 import LinkedInIcon from "../assets/icons/linkedin.svg";
 ---
 
 <style>
     #hero-section {
-        height: 100dvh;
+        height: calc(100dvh - 5rem);
         padding: 1rem;
         display: flex;
         flex-direction: column;
@@ -97,9 +97,15 @@ import LinkedInIcon from "../assets/icons/linkedin.svg";
             </p>
         </div>
 
-        <Button theme="primary" shape="pill" size="lg" classNames="glow">
+        <ButtonLink
+            theme="primary"
+            shape="pill"
+            size="lg"
+            classNames="glow"
+            href="/projects"
+        >
             See My Work
-        </Button>
+        </ButtonLink>
     </div>
     <div class="wrapper social-icons">
         <GitHubIcon />

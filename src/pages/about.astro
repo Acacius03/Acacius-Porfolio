@@ -1,5 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const meta = {
+    description: "Acacius Portfolio About Page",
+};
 ---
 
-<BaseLayout />
+<BaseLayout pageTitle="About" meta={meta}>
+    <main>
+        <section>
+            <h1>About Acacius</h1>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam
+                tenetur ab, tempora, officia reprehenderit debitis
+                necessitatibus vitae soluta magni quod ratione rem optio
+                consequatur recusandae unde voluptatibus dolor deleniti eaque!
+            </p>
+        </section>
+    </main>
+</BaseLayout>

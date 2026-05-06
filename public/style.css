@@ -11,6 +11,7 @@
     --color-secondary-dim: hsl(166 67 55 / 0.95);
     --color-secondary-dimmer: hsl(166 67 55 / 0.9);
 }
+
 * {
     margin: 0;
     border: none;
@@ -29,14 +30,11 @@ body {
         Helvetica,
         sans-serif;
 
-    background-color: var(--color-black);
-    /*background-image: radial-gradient(
-        50dvw circle at var(--mouse-x) var(--mouse-y),
-        color-mix(in srgb, var(--color-primary) 5%, transparent) 0%,
+    background-image: radial-gradient(
+        50dvw circle at 50% 50%,
+        color-mix(in srgb, var(--color-primary) 3%, transparent),
         transparent 60%
-    );*/
-    /*transition: all 10000ms ease-out;*/
-    color: var(--color-white);
+    );
 }
 body::before {
     content: "";
@@ -71,6 +69,11 @@ button {
         sans-serif;
 }
 
+ul,
+ol {
+    list-style: none;
+}
+
 .text-primary {
     color: var(--color-primary);
 }
@@ -88,4 +91,30 @@ button {
     max-inline-size: 1440px;
     margin-inline: auto;
     /*padding-inline: 1rem;*/
+}
+
+.bg-light {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.bg-dark {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+.bg-light.translucent {
+    background-color: hsl(0 0 94 / 0.15);
+    color: var(--color-white);
+}
+.bg-dark.translucent {
+    background-color: hsl(0 0 6 / 0.15);
+    color: var(--color-black);
+}
+
+.v-gradient-light-dark {
+    background-image: linear-gradient(
+        180deg,
+        hsl(0 0 96 / 0.1),
+        hsl(0 0 0 / 0.05)
+    );
 }

@@ -4,26 +4,25 @@
 
 <style>
     nav {
-        position: fixed;
+        position: sticky;
         top: 0;
         inset-inline: 0;
 
         display: flex;
         align-items: center;
         padding: 1rem 1.5rem;
+        max-height: 5rem;
     }
 
     nav a {
         text-decoration: none;
 
         &#brand-name {
-            background-color: hsl(0 0 100 / 0.05);
-
             margin-right: auto;
-            border-radius: 1000px;
-            padding: 0.5rem 1.25rem;
+            border-radius: calc(infinity * 1px);
+            padding: 0.5rem 1.5rem;
 
-            font-size: 2rem;
+            font-size: 1.7rem;
             line-height: 1.2;
             text-transform: uppercase;
         }
@@ -39,7 +38,7 @@
     }
 </style>
 <nav>
-    <a id="brand-name" href="/">ACACIUS</a>
+    <a id="brand-name" class="bg-light translucent" href="/">ACACIUS</a>
 
     <a class="nav-links" href="/">Home</a>
     <a class="nav-links" href="/about">About</a>

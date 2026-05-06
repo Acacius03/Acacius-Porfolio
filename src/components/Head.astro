@@ -1,0 +1,40 @@
+---
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
+
+import { Font } from "astro:assets";
+
+interface Props {
+    pageTitle?: string;
+    meta: {
+        description: string;
+    };
+}
+const { pageTitle, meta } = Astro.props;
+const fullTitle = `Acacius | ${pageTitle}`;
+---
+
+<head>
+    <meta charset="utf-8" />
+
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="/Acacius-Porfolio/favicon.svg"
+    />
+    <link rel="icon" href="/Acacius-Porfolio/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={meta.description} />
+
+    <Font cssVariable="--font-Quicksand" />
+    <Font cssVariable="--font-Roboto" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <Analytics />
+    <SpeedInsights />
+</head>
