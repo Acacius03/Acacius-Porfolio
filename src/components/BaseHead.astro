@@ -1,0 +1,24 @@
+---
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
+
+import { Font } from "astro:assets";
+
+interface Props {
+    title: string;
+    description: string;
+}
+const { title = "", description = "" } = Astro.props;
+const pageTitle = `Acacius | ${title}`;
+---
+
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
+<meta name="description" content={description} />
+
+<Font cssVariable="--font-Quicksand" />
+<Font cssVariable="--font-Roboto" />
+<link rel="stylesheet" href="/style.css" />
+
+<Analytics />
+<SpeedInsights />
