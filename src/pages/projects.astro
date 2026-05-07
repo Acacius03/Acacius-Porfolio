@@ -9,6 +9,7 @@ import ProjectCard from "../components/ProjectCard.astro";
         font-size: 4rem;
         text-align: center;
     }
+
     main {
         padding-block: 1.25rem;
         position: relative;
@@ -39,7 +40,7 @@ import ProjectCard from "../components/ProjectCard.astro";
     }
 
     .h-list {
-        overflow-x: hidden;
+        overflow-x: clip;
 
         & > .h-list-scroller {
             display: flex;
@@ -81,49 +82,10 @@ import ProjectCard from "../components/ProjectCard.astro";
         <div>
             <section id="recent-projects">
                 <h2 class="section-title">Recent Projects</h2>
-                <div class="h-list">
-                    <ul class="h-list-scroller">
-                        <li>
-                            <ProjectCard
-                                title="Project 1"
-                                tag="Full Stack"
-                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
-                            />
-                        </li>
-                        <li>
-                            <ProjectCard
-                                title="Project 1"
-                                tag="Full Stack"
-                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
-                            />
-                        </li>
-                        <li>
-                            <ProjectCard
-                                title="Project 1"
-                                tag="Full Stack"
-                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
-                            />
-                        </li>
-                        <li>
-                            <ProjectCard
-                                title="Project 1"
-                                tag="Full Stack"
-                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
-                            />
-                        </li>
-                        <li>
-                            <ProjectCard
-                                title="Project 1"
-                                tag="Full Stack"
-                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
-                            />
-                        </li>
-                    </ul>
-                </div>
             </section>
-            <section id="on-development-projects">
+            <!-- <section id="on-development-projects">
                 <h2 class="section-title">Projects On Development</h2>
-            </section>
+            </section> -->
         </div>
     </main>
 </BaseLayout>

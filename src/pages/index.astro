@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSection from "../components/HeroSection.astro";
+import RecentProjectsSection from "../components/RecentProjectsSection.astro";
 
 const meta = {
     description: "Acacius Portfolio Home Page",
@@ -8,8 +9,9 @@ const meta = {
 ---
 
 <BaseLayout pageTitle="Home" meta={meta}>
-    <main>
+    <main class="wrapper">
         <HeroSection />
+        <RecentProjectsSection />
     </main>
     <footer></footer>
 </BaseLayout>
