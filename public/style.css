@@ -107,8 +107,8 @@ ol {
     color: var(--color-white);
 }
 .bg-dark.translucent {
-    background-color: hsl(0 0 6 / 0.15);
-    color: var(--color-black);
+    background-color: hsl(0 0 6 / 0.3);
+    color: var(--color-white);
 }
 
 .v-gradient-light-dark {

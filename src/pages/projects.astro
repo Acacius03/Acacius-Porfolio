@@ -1,27 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+// import {Image} from 'astro:assets'
 ---
 
 <style>
-    h1 {
+    header > h1 {
         font-size: 4rem;
+        text-align: center;
     }
     main {
         padding-block: 1.25rem;
         position: relative;
 
-        display: grid;
-        grid-template-columns: 1fr 4fr;
-        gap: 1.25rem;
+        /*display: grid;*/
+        /*grid-template-columns: 1fr 4fr;*/
+        /*gap: 1.25rem;*/
     }
 
-    main > section {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-    }
-
-    main > aside {
+    /*main > aside {
         position: sticky;
         top: 6rem;
 
@@ -29,10 +26,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         padding: 0.5rem;
 
         border-radius: 0.25rem;
+    }*/
+
+    main > section {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
     }
 
     section > .section-title {
         font-size: 3rem;
+    }
+
+    .h-list {
+        overflow-x: hidden;
+
+        & > .h-list-scroller {
+            display: flex;
+            gap: 1.25rem;
+
+            overflow: auto;
+
+            padding-block: 0.625rem;
+            padding-inline: 1rem;
+
+            & > * {
+                flex-basis: 320px;
+                flex-shrink: 0;
+            }
+        }
     }
 </style>
 <BaseLayout
@@ -45,7 +67,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <h1>My Projects</h1>
     </header>
     <main class="wrapper">
-        <aside class="bg-light translucent">
+        <!-- <aside class="bg-light translucent">
             <h3>Outline</h3>
             <ul>
                 <li><a href="#recent-projects"> Recent Projects </a></li>
@@ -55,25 +77,52 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     </a>
                 </li>
             </ul>
-        </aside>
+        </aside> -->
         <div>
             <section id="recent-projects">
                 <h2 class="section-title">Recent Projects</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                    eius possimus mollitia debitis quidem deleniti rerum iusto,
-                    temporibus, sequi ab at ullam fugiat repellendus repellat
-                    voluptates pariatur quibusdam ea minus?
-                </p>
+                <div class="h-list">
+                    <ul class="h-list-scroller">
+                        <li>
+                            <ProjectCard
+                                title="Project 1"
+                                tag="Full Stack"
+                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
+                            />
+                        </li>
+                        <li>
+                            <ProjectCard
+                                title="Project 1"
+                                tag="Full Stack"
+                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
+                            />
+                        </li>
+                        <li>
+                            <ProjectCard
+                                title="Project 1"
+                                tag="Full Stack"
+                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
+                            />
+                        </li>
+                        <li>
+                            <ProjectCard
+                                title="Project 1"
+                                tag="Full Stack"
+                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
+                            />
+                        </li>
+                        <li>
+                            <ProjectCard
+                                title="Project 1"
+                                tag="Full Stack"
+                                projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam quaerat dolor amet molestias qui ipsum..."
+                            />
+                        </li>
+                    </ul>
+                </div>
             </section>
             <section id="on-development-projects">
                 <h2 class="section-title">Projects On Development</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                    eius possimus mollitia debitis quidem deleniti rerum iusto,
-                    temporibus, sequi ab at ullam fugiat repellendus repellat
-                    voluptates pariatur quibusdam ea minus?
-                </p>
             </section>
         </div>
     </main>

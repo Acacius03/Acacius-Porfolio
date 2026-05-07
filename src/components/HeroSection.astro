@@ -18,6 +18,7 @@ import LinkedInIcon from "../assets/icons/linkedin.svg";
 
     #hero-section > .social-icons {
         & > * {
+            display: inline-block;
             background-color: hsl(0 0 100 / 0.1);
             width: 5rem;
             height: 5rem;
@@ -108,7 +109,11 @@ import LinkedInIcon from "../assets/icons/linkedin.svg";
         </ButtonLink>
     </div>
     <div class="wrapper social-icons">
-        <GitHubIcon />
-        <LinkedInIcon />
+        <a href="/">
+            <GitHubIcon />
+        </a>
+        <a href="/">
+            <LinkedInIcon />
+        </a>
     </div>
 </section>
