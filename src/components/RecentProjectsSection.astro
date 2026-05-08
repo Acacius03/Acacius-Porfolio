@@ -1,15 +1,52 @@
 ---
-
+import ButtonLink from "./ButtonLink.astro";
+import ProjectCard from "./ProjectCard.astro";
 ---
 
 <style>
     #recent-projects {
         padding: 1.25rem;
+        z-index: 0;
+
+        & > h2 {
+            font-size: 3rem;
+            text-align: center;
+        }
+        & > a {
+            display: block;
+            margin-inline: auto;
+            width: max-content;
+        }
     }
-    h2 {
-        font-size: 3rem;
+    #recent-projects > .project-grid {
+        margin: 2rem auto;
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.25rem;
     }
 </style>
-<section id="recent-projects" class="min-screen-height">
+<section id="recent-projects">
     <h2 class="section-title">Recent Projects</h2>
+    <div class="project-grid">
+        <ProjectCard
+            title="Project 1"
+            tag="Full Stack"
+            projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ratione quae maxime perferendis rem! Fugiat, quia?"
+        />
+        <ProjectCard
+            title="Project 1"
+            tag="Full Stack"
+            projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ratione quae maxime perferendis rem! Fugiat, quia?"
+        />
+        <ProjectCard
+            title="Project 1"
+            tag="Full Stack"
+            projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ratione quae maxime perferendis rem! Fugiat, quia?"
+        />
+    </div>
+    <ButtonLink theme="primary" size="sm" href="/projects">
+        All Projects
+    </ButtonLink>
 </section>

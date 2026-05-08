@@ -11,11 +11,17 @@ interface Props {
 const { pageTitle, meta } = Astro.props;
 ---
 
+<style>
+    footer {
+        min-height: 5rem;
+    }
+</style>
 <html lang="en">
     <Head pageTitle={pageTitle} meta={meta} />
     <body class="gradient bg-dark">
         <MainNavigation />
         <slot />
+        <footer></footer>
         <script>
             const root = document.documentElement;
 

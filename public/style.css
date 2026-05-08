@@ -12,10 +12,6 @@
     --color-secondary-dimmer: hsl(166 67 55 / 0.9);
 }
 
-a {
-    color: inherit;
-}
-
 body {
     font:
         16px/1.5 var(--font-Roboto),
@@ -55,17 +51,14 @@ h6 {
     font-weight: 400;
 }
 
-button {
-    font:
-        16px/1.5 var(--font-Roboto),
-        Arial,
-        Helvetica,
-        sans-serif;
-}
-
 ul,
 ol {
     list-style: none;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .min-screen-height {
@@ -84,9 +77,11 @@ ol {
     background-color: var(--color-secondary);
 }
 .wrapper {
-    inline-size: 95%;
     max-inline-size: 1440px;
     margin-inline: auto;
+    @media (width >= 40rem) {
+        inline-size: 95%;
+    }
 }
 
 .bg-light {
