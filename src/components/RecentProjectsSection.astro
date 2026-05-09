@@ -5,12 +5,16 @@ import ProjectCard from "./ProjectCard.astro";
 
 <style>
     #recent-projects {
-        padding: 1.25rem;
         z-index: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         & > h2 {
             font-size: 3rem;
             text-align: center;
+            margin-block: 0 2rem;
         }
         & > a {
             display: block;
@@ -19,34 +23,86 @@ import ProjectCard from "./ProjectCard.astro";
         }
     }
     #recent-projects > .project-grid {
-        margin: 2rem auto;
+        --max-width: 280px;
+        --columns: 1;
+        --gap: 1.25rem;
+        max-width: min(
+            100%,
+            calc(
+                (var(--max-width) * var(--columns)) +
+                    ((var(--columns) - 1) * var(--gap))
+            )
+        );
 
-        display: flex;
+        margin-block: 2rem;
+        margin-inline: auto;
+
+        display: grid;
+        grid-template-columns: repeat(
+            var(--columns),
+            minmax(min(var(--max-width), 100%), 1fr)
+        );
         justify-content: center;
         flex-wrap: wrap;
         gap: 1.25rem;
+
+        .project-card {
+            width: 100%;
+            max-width: var(--max-width);
+        }
+
+        @media (width > 20rem) {
+            & {
+                --max-width: 300px;
+            }
+        }
+
+        @media (width > 40rem) {
+            & {
+                --columns: 2;
+            }
+            .project-card:last-of-type {
+                grid-column: 1 / -1;
+                margin-inline: auto;
+            }
+        }
+
+        @media (width >= 64rem) {
+            & {
+                --columns: 3;
+            }
+            .project-card:last-of-type {
+                grid-column: unset;
+                margin-inline: 0;
+            }
+        }
+
+        @media (width >= 80rem) {
+            & {
+                --max-width: 360px;
+            }
+        }
     }
 </style>
-<section id="recent-projects">
+<section id="recent-projects" class="min-screen-height">
     <h2 class="section-title">Recent Projects</h2>
     <div class="project-grid">
         <ProjectCard
-            title="Project 1"
-            tag="Full Stack"
-            projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ratione quae maxime perferendis rem! Fugiat, quia?"
+            title="Campus Online Navigation Tool"
+            tag="Web App"
+            frontEndTechs={["vue", "typescript"]}
+            databaseTechs={["firebase", "supabase"]}
         />
+        <ProjectCard title="Project 1" tag="Fullstack" />
         <ProjectCard
-            title="Project 1"
-            tag="Full Stack"
-            projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ratione quae maxime perferendis rem! Fugiat, quia?"
-        />
-        <ProjectCard
-            title="Project 1"
-            tag="Full Stack"
-            projectSummary="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ratione quae maxime perferendis rem! Fugiat, quia?"
+            title="NuestraRx Platform"
+            tag="Multi-Platform"
+            frontEndTechs={["vue"]}
+            backEndTechs={["php", "vb"]}
+            databaseTechs={["mysql"]}
         />
     </div>
-    <ButtonLink theme="primary" size="sm" href="/projects">
+    <ButtonLink theme="primary" size="lg" classNames="rounded" href="/projects">
         All Projects
     </ButtonLink>
 </section>
