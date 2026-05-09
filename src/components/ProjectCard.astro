@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 type ProjectTag =
     | "Frontend"
     | "Backend"
@@ -143,7 +144,7 @@ const techStack = [...frontEndTechs, ...backEndTechs, ...databaseTechs];
 </style>
 <article class="project-card">
     <div class="project-img">
-        <img
+        <Image
             src={img?.src || "https://picsum.photos/320/240"}
             alt={img?.alt || "Project Image"}
             width="320"
