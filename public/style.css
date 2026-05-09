@@ -19,11 +19,17 @@ body {
         Helvetica,
         sans-serif;
 
+    background-color: var(--color-black);
+    color: var(--color-white);
+
     background-image: radial-gradient(
-        50dvw circle at 50% 50%,
-        color-mix(in srgb, var(--color-primary) 3%, transparent),
+        50dvw circle at center top,
+        color-mix(in srgb, var(--color-primary) 6%, transparent),
         transparent 60%
     );
+
+    background-repeat: no-repeat;
+    min-height: 100dvh;
 }
 
 body::before {
@@ -79,7 +85,7 @@ img {
 .wrapper {
     max-inline-size: 1440px;
     margin-inline: auto;
-    @media (width >= 40rem) {
+    @media (width > 40rem) {
         inline-size: 95%;
     }
 }
