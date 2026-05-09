@@ -2,6 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 // import {Image} from 'astro:assets'
+
+const meta = {
+    description: "Acacius Portfolio Projects Page",
+};
 ---
 
 <style>
@@ -58,12 +62,7 @@ import ProjectCard from "../components/ProjectCard.astro";
         }
     }
 </style>
-<BaseLayout
-    pageTitle="Projects"
-    meta={{
-        description: "Acacius Portfolio Projects Page",
-    }}
->
+<BaseLayout pageTitle="Projects" meta={meta}>
     <header class="wrapper">
         <h1>My Projects</h1>
     </header>
