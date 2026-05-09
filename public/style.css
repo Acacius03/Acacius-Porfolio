@@ -19,9 +19,6 @@ body {
         Helvetica,
         sans-serif;
 
-    background-color: var(--color-black);
-    color: var(--color-white);
-
     background-image: radial-gradient(
         50dvw circle at center top,
         color-mix(in srgb, var(--color-primary) 6%, transparent),
@@ -30,20 +27,53 @@ body {
 
     background-repeat: no-repeat;
     min-height: 100dvh;
-}
 
+    position: relative;
+}
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
+
+    background-image: url("/grid.png");
+    background-size: 100%;
+    background-repeat: repeat;
+
+    pointer-events: none;
+
+    opacity: 1;
+
+    z-index: -1;
+
+    mask-image: radial-gradient(
+        circle 250px at var(--mouse-x) var(--mouse-y),
+        white 0%,
+        transparent 100%
+    );
+
+    -webkit-mask-image: radial-gradient(
+        circle 250px at var(--mouse-x) var(--mouse-y),
+        white 0%,
+        transparent 100%
+    );
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
     background: radial-gradient(
         50dvw circle at var(--mouse-x) var(--mouse-y),
-        color-mix(in srgb, var(--color-primary) 3%, transparent),
+        color-mix(in srgb, var(--color-primary) 4%, transparent),
         transparent 60%
     );
-    pointer-events: none;
-    transition: opacity 300ms ease;
-    opacity: 1;
+
+    z-index: -1;
 }
 
 h1,
