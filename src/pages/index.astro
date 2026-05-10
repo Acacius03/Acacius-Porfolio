@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import MainNavigation from "../components/MainNavigation.astro";
 import HeroSection from "../components/HeroSection.astro";
 import RecentProjectsSection from "../components/RecentProjectsSection.astro";
 
@@ -9,6 +10,8 @@ const meta = {
 ---
 
 <BaseLayout pageTitle="Home" meta={meta}>
+    <MainNavigation />
+
     <main class="wrapper">
         <HeroSection />
         <RecentProjectsSection />

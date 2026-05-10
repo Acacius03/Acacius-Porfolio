@@ -1,4 +1,6 @@
 :root {
+    --hero-size: 50dvw;
+    --hero-fade: 60%;
     --mouse-x: -50%;
     --mouse-y: -50%;
 
@@ -19,61 +21,40 @@ body {
         Helvetica,
         sans-serif;
 
-    background-image: radial-gradient(
-        50dvw circle at center top,
-        color-mix(in srgb, var(--color-primary) 6%, transparent),
-        transparent 60%
-    );
-
-    background-repeat: no-repeat;
+    min-height: 100vh;
     min-height: 100dvh;
 
     position: relative;
 }
+
 body::before {
     content: "";
-
-    position: fixed;
+    position: absolute;
     inset: 0;
-
-    background-image: url("/grid.png");
-    background-size: 100%;
-    background-repeat: repeat;
-
+    z-index: -1;
     pointer-events: none;
 
-    opacity: 1;
+    background-image:
+        url("/grid.webp"),
+        radial-gradient(
+            var(--hero-size) circle at center top,
+            color-mix(in hsl, var(--color-primary) 6%, transparent),
+            transparent var(--hero-fade)
+        );
 
-    z-index: -1;
+    background-position: center;
 
-    mask-image: radial-gradient(
-        circle 250px at var(--mouse-x) var(--mouse-y),
-        white 0%,
-        transparent 100%
-    );
-
-    -webkit-mask-image: radial-gradient(
-        circle 250px at var(--mouse-x) var(--mouse-y),
-        white 0%,
-        transparent 100%
-    );
-}
-
-body::after {
-    content: "";
-
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    background: radial-gradient(
-        50dvw circle at var(--mouse-x) var(--mouse-y),
-        color-mix(in srgb, var(--color-primary) 4%, transparent),
-        transparent 60%
-    );
-
-    z-index: -1;
+    mask-image:
+        radial-gradient(
+            var(--hero-size) circle at center top,
+            white,
+            transparent var(--hero-fade)
+        ),
+        radial-gradient(
+            250px circle at var(--mouse-x) var(--mouse-y),
+            white,
+            transparent 100%
+        );
 }
 
 h1,
