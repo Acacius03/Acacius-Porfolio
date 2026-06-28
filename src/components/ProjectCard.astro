@@ -1,178 +1,148 @@
 ---
 import { Image } from "astro:assets";
+import TechStackIcons from "./TechStackIcons.astro";
 type ProjectTag =
-    | "Frontend"
-    | "Backend"
-    | "Fullstack"
-    | "Mobile"
-    | "Web App"
-    | "Desktop"
-    | "Multi-Platform";
+	| "Frontend"
+	| "Backend"
+	| "Fullstack"
+	| "Mobile"
+	| "Web App"
+	| "Desktop"
+	| "Multi-Platform";
 
 type FrontendTech = "javascript" | "typescript" | "react" | "vue";
 type BackendTech = "laravel" | "asp" | "python" | "php" | "vb";
 type DatabaseTech = "sqlite" | "firebase" | "supabase" | "mysql";
 
 interface Props {
-    title: string;
-    tag: ProjectTag;
-    img?: {
-        src: string;
-        alt: string;
-    };
-    frontEndTechs?: FrontendTech[];
-    backEndTechs?: BackendTech[];
-    databaseTechs?: DatabaseTech[];
+	title: string;
+	tag: ProjectTag;
+	img?: {
+		src: string;
+		alt: string;
+	};
+	frontEndTechs?: FrontendTech[];
+	backEndTechs?: BackendTech[];
+	databaseTechs?: DatabaseTech[];
 }
 
 const {
-    title,
-    tag,
-    img,
-    frontEndTechs = [],
-    backEndTechs = [],
-    databaseTechs = [],
+	title,
+	tag,
+	img = {
+		src: "https://picsum.photos/320/240",
+		alt: "Project",
+	},
+	frontEndTechs = [],
+	backEndTechs = [],
+	databaseTechs = [],
 } = Astro.props;
-const techStack = [...frontEndTechs, ...backEndTechs, ...databaseTechs];
 ---
 
 <style>
-    article {
-        position: relative;
-        overflow: hidden;
+	.project-card {
+		min-width: 240px;
+		background-color: hsl(0 0 6);
 
-        display: grid;
-        grid-template-rows: auto 1fr;
+		display: grid;
+		grid-template-rows: auto 1fr;
+		border: 1px solid var(--color-neutral-800);
 
-        border: 1px solid hsl(0 0 94 / 0.15);
-        padding: 0.5rem;
-        border-top-left-radius: 1.25rem;
-        border-top-right-radius: 1.25rem;
-        border-bottom-left-radius: 0.25rem;
-        border-bottom-right-radius: 0.25rem;
+		border-top-left-radius: 1.25rem;
+		border-top-right-radius: 1.25rem;
+		border-bottom-left-radius: 0.25rem;
+		border-bottom-right-radius: 0.25rem;
 
-        min-width: 240px;
+		transition: transform 180ms ease-out 180ms;
+	}
 
-        transition:
-            transform 180ms ease,
-            border-color 180ms ease;
-    }
+	.project-img-container {
+		position: relative;
+		overflow: hidden;
 
-    .project-img {
-        position: relative;
-        overflow: hidden;
+		border: 1px solid hsl(0 0 94 / 0.1);
+		border-top-left-radius: 0.75rem;
+		border-top-right-radius: 0.75rem;
+		margin: 0.5rem;
 
-        border: 1px solid hsl(0 0 94 / 0.3);
-        border-top-left-radius: 0.75rem;
-        border-top-right-radius: 0.75rem;
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-color: hsl(0 0 6 / 0.15);
+		}
+	}
 
-        &::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-color: hsl(0 0 6 / 0.15);
-        }
-    }
+	.project-img {
+		width: 100%;
+		aspect-ratio: 4/3;
+		object-fit: cover;
+		transition: transform 200ms ease-out;
+	}
 
-    img {
-        width: 100%;
-        object-fit: cover;
-        transition: transform 200ms ease-out;
-    }
+	.tag {
+		position: absolute;
+		top: 0;
+		right: 0;
 
-    .tag {
-        position: absolute;
-        top: 0;
-        right: 0;
+		background-color: hsl(0 0 6 / 0.6);
+		backdrop-filter: blur(8px);
 
-        background-color: hsl(0 0 6 / 0.6);
-        backdrop-filter: blur(8px);
+		border: 1px solid hsl(0 0% 100% / 0.08);
 
-        border: 1px solid hsl(0 0% 100% / 0.08);
+		color: var(--color-white);
+		font-size: 0.8rem;
+		line-height: 1.15;
 
-        color: var(--color-white);
-        font-size: 0.8rem;
-        /*font-weight: 500;*/
-        line-height: 1.15;
+		margin: 0.5rem;
+		border-radius: calc(infinity * 1px);
 
-        margin: 1rem;
-        border-radius: calc(infinity * 1px);
+		padding: 0.45em 0.85em;
+	}
 
-        padding: 0.45em 0.85em;
-    }
+	.project-details {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		justify-content: space-between;
 
-    .project-details {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+		color: var(--color-white);
 
-        background-color: transparent;
-        color: var(--color-white);
+		padding: 0.25rem 1rem 1rem;
+	}
 
-        padding: 0.75rem;
+	.project-title {
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+		line-height: 1.15;
+	}
 
-        & > h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.15;
-        }
-    }
+	.project-card:hover {
+		transform: scale(1.01) translateY(-0.5%);
+		border-width: 2px;
 
-    article:hover {
-        transform: translateY(-4px);
-        border-color: hsl(0 0% 100% / 0.25);
-        img {
-            transform: scale(1.02);
-        }
-    }
-
-    .tech-stack-icons {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: auto;
-    }
-    .tech-stack-icons > .label {
-        font-size: 0.75em;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-    }
-    .tech-icon {
-        width: 24px;
-        height: 24px;
-    }
+		.project-img {
+			transform: scale(1.02);
+		}
+	}
 </style>
 <article class="project-card">
-    <div class="project-img">
-        <Image
-            src={img?.src || "https://picsum.photos/320/240"}
-            alt={img?.alt || "Project Image"}
-            width="320"
-            height="240"
-        />
-    </div>
-    <span class="tag">{tag}</span>
-    <div class="project-details">
-        <h3>{title}</h3>
-        <div class="tech-stack-icons">
-            {
-                techStack.length > 0 ? (
-                    <span class="label"> Built With </span>
-                ) : (
-                    <span class="label"> No Tech Stack </span>
-                )
-            }
-            {
-                techStack.map((icon) => (
-                    <img
-                        src={`/icons/${icon}.svg`}
-                        alt={`${icon} icon`}
-                        class="tech-icon"
-                        width="24"
-                        height="24"
-                    />
-                ))
-            }
-        </div>
-    </div>
+	<div class="project-img-container">
+		<Image
+			src={img.src}
+			alt={img.alt}
+			width="320"
+			height="240"
+			class="project-img"
+		/>
+		<span class="tag">{tag}</span>
+	</div>
+	<div class="project-details">
+		<h3 class="project-title">{title}</h3>
+		<TechStackIcons
+			frontEndTechs={frontEndTechs}
+			backEndTechs={backEndTechs}
+			databaseTechs={databaseTechs}
+		/>
+	</div>
 </article>

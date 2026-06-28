@@ -2,70 +2,70 @@
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"a"> {
-    theme?: "primary" | "secondary";
-    shape?: "pill" | "circle";
-    size?: "sm" | "lg";
-    classNames?: string;
+	theme?: "primary" | "secondary";
+	shape?: "pill" | "circle";
+	size?: "sm" | "lg";
+	className?: string;
 }
 
-const { theme, shape, size, classNames, ...rest } = Astro.props;
+const { theme, shape, size, className, ...rest } = Astro.props;
 ---
 
 <style>
-    a.btn {
-        display: inline-block;
+	a.btn {
+		display: inline-block;
 
-        text-decoration: none;
-        place-content: center;
+		text-decoration: none;
+		place-content: center;
 
-        min-height: 3rem;
-        font-size: 1rem;
-        line-height: 1;
-        padding: 0.8em 1.4em;
+		min-height: 3rem;
+		font-size: 1rem;
+		line-height: 1;
+		padding: 0.8em 1.4em;
 
-        &.sm {
-            font-size: 0.9rem;
-        }
+		&.sm {
+			font-size: 0.9rem;
+		}
 
-        &.lg {
-            font-size: 1.25rem;
-        }
+		&.lg {
+			font-size: 1.25rem;
+		}
 
-        &.primary {
-            background-color: var(--color-primary);
-            color: var(--color-white);
+		&.primary {
+			background-color: var(--color-primary);
+			color: var(--color-white);
 
-            &:hover {
-                background-color: var(--color-primary-dim);
-            }
-            &:active {
-                background-color: var(--color-primary-dimmer);
-            }
-        }
+			&:hover {
+				background-color: var(--color-primary-dim);
+			}
+			&:active {
+				background-color: var(--color-primary-dimmer);
+			}
+		}
 
-        &.secondary {
-            background-color: var(--color-secondary);
-            color: var(--color-black);
-            &:hover {
-                background-color: var(--color-secondary-dim);
-            }
-            &:active {
-                background-color: var(--color-secondary-dimmer);
-            }
-        }
+		&.secondary {
+			background-color: var(--color-secondary);
+			color: var(--color-black);
+			&:hover {
+				background-color: var(--color-secondary-dim);
+			}
+			&:active {
+				background-color: var(--color-secondary-dimmer);
+			}
+		}
 
-        &.pill {
-            border-radius: calc(infinity * 1px);
-        }
+		&.pill {
+			border-radius: calc(infinity * 1px);
+		}
 
-        &.circle {
-            aspect-ratio: 1/1;
-            min-width: 3rem;
-            border-radius: calc(infinity * 1px);
-        }
-    }
+		&.circle {
+			aspect-ratio: 1/1;
+			min-width: 3rem;
+			border-radius: calc(infinity * 1px);
+		}
+	}
 </style>
 
-<a class:list={["btn", theme, shape, size, classNames]} {...rest}>
-    <slot />
+<a class:list={["btn", theme, shape, size, className]} {...rest}>
+	<slot />
 </a>

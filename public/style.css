@@ -1,60 +1,60 @@
 :root {
-    --hero-size: 50dvw;
-    --hero-fade: 60%;
-    --mouse-x: -50%;
-    --mouse-y: -50%;
+	--hero-size: 50dvw;
+	--hero-fade: 60%;
+	--mouse-x: -50%;
+	--mouse-y: -50%;
 
-    --color-black: hsl(0 0 6);
-    --color-white: hsl(0 0 94);
-    --color-primary: hsl(271 100 59);
-    --color-primary-dim: hsl(271 100 59 / 0.95);
-    --color-primary-dimmer: hsl(271 100 59 / 0.9);
-    --color-secondary: hsl(166 67 55);
-    --color-secondary-dim: hsl(166 67 55 / 0.95);
-    --color-secondary-dimmer: hsl(166 67 55 / 0.9);
+	--color-black: hsl(0 0 6);
+	--color-white: hsl(0 0 94);
+	--color-primary: hsl(271 100 59);
+	--color-primary-dim: hsl(271 100 59 / 0.95);
+	--color-primary-dimmer: hsl(271 100 59 / 0.9);
+	--color-secondary: hsl(166 67 55);
+	--color-secondary-dim: hsl(166 67 55 / 0.95);
+	--color-secondary-dimmer: hsl(166 67 55 / 0.9);
 }
 
 body {
-    font:
-        16px/1.5 var(--font-Roboto),
-        Arial,
-        Helvetica,
-        sans-serif;
+	font:
+		16px/1.5 var(--font-Roboto),
+		Arial,
+		Helvetica,
+		sans-serif;
 
-    min-height: 100vh;
-    min-height: 100dvh;
+	min-block-size: 100vh;
+	min-block-size: 100dvh;
 
-    position: relative;
+	position: relative;
 }
 
 body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
 
-    background-image:
-        url("/grid.webp"),
-        radial-gradient(
-            var(--hero-size) circle at center top,
-            color-mix(in hsl, var(--color-primary) 6%, transparent),
-            transparent var(--hero-fade)
-        );
+	background-image:
+		url("/grid.webp"),
+		radial-gradient(
+			var(--hero-size) circle at center top,
+			color-mix(in hsl, var(--color-primary) 6%, transparent),
+			transparent var(--hero-fade)
+		);
 
-    background-position: center;
+	background-position: center;
 
-    mask-image:
-        radial-gradient(
-            var(--hero-size) circle at center top,
-            white,
-            transparent var(--hero-fade)
-        ),
-        radial-gradient(
-            250px circle at var(--mouse-x) var(--mouse-y),
-            white,
-            transparent 100%
-        );
+	mask-image:
+		radial-gradient(
+			var(--hero-size) circle at center top,
+			white,
+			transparent var(--hero-fade)
+		),
+		radial-gradient(
+			250px circle at var(--mouse-x) var(--mouse-y),
+			white,
+			transparent 100%
+		);
 }
 
 h1,
@@ -63,73 +63,76 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-Quicksand);
-    line-height: 1.2;
-    font-weight: 400;
+	font-family: var(--font-Quicksand);
+	line-height: 1.2;
+	font-weight: 400;
 }
 
 ul,
 ol {
-    list-style: none;
+	list-style: none;
 }
 
 img {
-    max-width: 100%;
-    max-height: 100%;
+	max-inline-size: 100%;
+	max-block-size: 100%;
 }
 
 .min-screen-height {
-    min-height: calc(100dvh - 5rem);
+	min-block-size: calc(100dvh - 5rem);
+}
+.max-screen-height {
+	max-block-size: calc(100dvh - 5rem);
 }
 .text-primary {
-    color: var(--color-primary);
+	color: var(--color-primary);
 }
 .text-secondary {
-    color: var(--color-secondary);
+	color: var(--color-secondary);
 }
 .bg-primary {
-    background-color: var(--color-primary);
+	background-color: var(--color-primary);
 }
 .bg-secondary {
-    background-color: var(--color-secondary);
+	background-color: var(--color-secondary);
 }
 .wrapper {
-    max-inline-size: 1440px;
-    margin-inline: auto;
-    @media (width > 40rem) {
-        inline-size: 95%;
-    }
+	max-inline-size: 1440px;
+	margin-inline: auto;
+	@media (width > 40rem) {
+		inline-size: 95%;
+	}
 }
 
 .bg-light {
-    background-color: var(--color-white);
-    color: var(--color-black);
+	background-color: var(--color-white);
+	color: var(--color-black);
 }
 .bg-dark {
-    background-color: var(--color-black);
-    color: var(--color-white);
+	background-color: var(--color-black);
+	color: var(--color-white);
 }
 .bg-primary {
-    background-color: var(--color-primary);
-    color: var(--color-black);
+	background-color: var(--color-primary);
+	color: var(--color-black);
 }
 .bg-light.translucent {
-    background-color: hsl(0 0 94 / 0.15);
-    color: var(--color-white);
+	background-color: hsl(0 0 94 / 0.15);
+	color: var(--color-white);
 }
 .bg-dark.translucent {
-    background-color: hsl(0 0 6 / 0.3);
-    color: var(--color-white);
+	background-color: hsl(0 0 6 / 0.3);
+	color: var(--color-white);
 }
 .bg-primary.translucent {
-    background-color: hsl(271 100 59 / 0.8);
-    color: var(--color-white);
+	background-color: hsl(271 100 59 / 0.8);
+	color: var(--color-white);
 }
 
 .v-gradient-light-dark {
-    background-image: linear-gradient(
-        180deg,
-        hsl(0 0 96 / 0.1),
-        hsl(0 0 0 / 0.05)
-    );
+	background-image: linear-gradient(
+		180deg,
+		hsl(0 0 96 / 0.1),
+		hsl(0 0 0 / 0.05)
+	);
 }

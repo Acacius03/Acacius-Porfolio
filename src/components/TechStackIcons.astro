@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+
+type FrontendTech = "javascript" | "typescript" | "react" | "vue";
+type BackendTech = "laravel" | "asp" | "python" | "php" | "vb";
+type DatabaseTech = "sqlite" | "firebase" | "supabase" | "mysql";
+interface Props {
+	frontEndTechs?: FrontendTech[];
+	backEndTechs?: BackendTech[];
+	databaseTechs?: DatabaseTech[];
+}
+
+const {
+	frontEndTechs = [],
+	backEndTechs = [],
+	databaseTechs = [],
+} = Astro.props;
+
+const techStack = [...frontEndTechs, ...backEndTechs, ...databaseTechs];
+---
+
+<style>
+	.tech-stack-icons {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: auto;
+	}
+	.tech-stack-icons > .label {
+		font-size: 0.75em;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+	}
+	.tech-icon {
+		width: 24px;
+		height: 24px;
+	}
+</style>
+<div class="tech-stack-icons">
+	<!-- {
+		techStack.length > 0 ? (
+			<span class="label"> Built With </span>
+		) : (
+			<span class="label"> No Tech Stack </span>
+		)
+	} -->
+	{
+		techStack.map((icon) => (
+			<Image
+				src={`/icons/${icon}.svg`}
+				alt={`${icon} icon`}
+				class="tech-icon"
+				width="24"
+				height="24"
+			/>
+		))
+	}
+</div>

@@ -1,59 +1,169 @@
 ---
 import ButtonLink from "./ButtonLink.astro";
+import ToggleButton from "./ToggleButton.astro";
 ---
 
 <style>
-    nav {
-        background-color: hsl(0 0 6 / 0.8);
-        backdrop-filter: blur(20px);
+	#main-navbar {
+		background-color: hsl(0 0 6);
 
-        position: sticky;
-        top: 0;
-        inset-inline: 0;
-        z-index: 99999;
+		inset-inline: 0;
+		max-block-size: 5rem;
 
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
+		position: sticky;
+		top: 0;
+		inset-inline: 0;
+		z-index: 99999;
 
-        padding: 1rem 1.5rem;
-    }
+		& > * {
+			background-color: inherit;
+		}
+	}
 
-    nav a {
-        text-decoration: none;
+	#main-navbar a {
+		text-decoration: none;
 
-        &#brand-name {
-            margin-right: auto;
-            border-radius: calc(infinity * 1px);
-            padding: 0.5rem 1.5rem;
+		&#brand-name {
+			margin-right: auto;
+			border-radius: calc(infinity * 1px);
+			padding: 0.5rem 1.5rem;
 
-            font-size: 1.7rem;
-            line-height: 1.2;
-            text-transform: uppercase;
-        }
+			font-size: 1.7rem;
+			line-height: 1.2;
+			text-transform: uppercase;
+		}
 
-        &.nav-links {
-            padding: 0.75rem 1rem;
-            border-radius: 0.25rem;
+		&.nav-links {
+			padding: 0.75rem 1rem;
+			border-radius: 0.25rem;
 
-            &:hover {
-                background-color: hsl(0 0 100 / 0.02);
-            }
-        }
-    }
+			&:hover {
+				background-color: hsl(0 0 100 / 0.02);
+			}
+		}
+	}
+
+	#main-nav-menu {
+		z-index: -1;
+
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-auto-rows: 3rem;
+
+		padding: 1rem;
+
+		position: absolute;
+		top: 100%;
+		inset-inline: 0;
+
+		opacity: 0;
+		transform: translateY(-100%);
+
+		transition:
+			opacity 300ms ease-out,
+			transform 300ms ease-out;
+
+		#contact-btn {
+			margin-block: 0.5rem 0;
+		}
+	}
+
+	nav:has(#mobile-navigation-toggle input:checked) {
+		#main-nav-menu {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	@media (width >= 40rem) {
+		#main-navbar {
+			background-color: hsl(0 0 6 / 0.8);
+			backdrop-filter: blur(20px);
+
+			display: grid;
+			grid-template-columns: auto 1fr;
+		}
+
+		#main-nav-menu {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+
+			position: static;
+
+			opacity: 1;
+			transform: translateY(0);
+
+			transition: none;
+
+			#contact-btn {
+				flex-shrink: 0;
+				margin-inline: 0.5rem 0;
+				margin-block: 0;
+			}
+		}
+	}
 </style>
-<nav>
-    <a id="brand-name" class="bg-light translucent" href="/">ACACIUS</a>
+<style is:global>
+	#mobile-navigation-toggle {
+		inline-size: 3rem;
+		block-size: 3rem;
 
-    <a class="nav-links" href="/">Home</a>
-    <a class="nav-links" href="/about">About</a>
-    <a class="nav-links" href="/projects">Projects</a>
+		padding: 0.5rem;
 
-    <ButtonLink
-        theme="primary"
-        id="contact-btn"
-        classNames="rounded-lg ml-auto"
-    >
-        Contact Me!
-    </ButtonLink>
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+
+		z-index: 1;
+
+		& > div {
+			background-color: hsl(0 0 94);
+
+			inline-size: 100%;
+			block-size: 0.375rem;
+
+			margin: auto;
+			border-radius: var(--radius-xs);
+
+			transform-origin: center;
+			transition-duration: 300ms;
+		}
+	}
+	@media (width >= 40rem) {
+		#mobile-navigation-toggle {
+			display: none;
+		}
+	}
+</style>
+<nav id="main-navbar">
+	<div class="flex justify-between z-10 p-4">
+		<a id="brand-name" class="bg-light translucent" href="/">ACACIUS</a>
+
+		<ToggleButton id="mobile-navigation-toggle">
+			<div
+				class="peer-checked:rotate-45 peer-checked:translate-y-2.75 peer-checked:rounded-sm"
+			>
+			</div>
+			<div class="peer-checked:opacity-0 peer-checked:scale-y-0"></div>
+			<div
+				class="peer-checked:-rotate-45 peer-checked:-translate-y-2.75 peer-checked:rounded-sm"
+			>
+			</div>
+		</ToggleButton>
+	</div>
+
+	<div id="main-nav-menu">
+		<a class="nav-links" href="/">Home</a>
+		<a class="nav-links" href="/about">About</a>
+		<a class="nav-links" href="/projects">Projects</a>
+
+		<ButtonLink
+			theme="primary"
+			id="contact-btn"
+			className="rounded-md"
+			href="/contact"
+		>
+			Contact Me!
+		</ButtonLink>
+	</div>
 </nav>

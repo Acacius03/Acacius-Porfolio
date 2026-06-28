@@ -1,29 +1,19 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-
-interface Props extends HTMLAttributes<"button"> {
+interface Props {
+	id?: string;
+	checked?: boolean;
 	theme?: "primary" | "secondary";
-	shape?: "rounded" | "pill" | "circle";
-	size?: "sm" | "lg";
 	className?: string;
 }
 
-const { theme, shape, size, className, ...rest } = Astro.props;
+const { id, checked = false, theme, className = "" } = Astro.props;
 ---
 
 <style>
-	button.btn {
+	label.toggle-btn {
 		min-height: 3rem;
 		font-size: 1rem;
 		line-height: 1;
-
-		&.sm {
-			font-size: 0.9rem;
-		}
-
-		&.lg {
-			font-size: 1.25rem;
-		}
 
 		&.primary {
 			background-color: var(--color-primary);
@@ -40,6 +30,7 @@ const { theme, shape, size, className, ...rest } = Astro.props;
 		&.secondary {
 			background-color: var(--color-secondary);
 			color: var(--color-black);
+
 			&:hover {
 				background-color: var(--color-secondary-dim);
 			}
@@ -47,23 +38,11 @@ const { theme, shape, size, className, ...rest } = Astro.props;
 				background-color: var(--color-secondary-dimmer);
 			}
 		}
-
-		&.rounded {
-		}
-
-		&.pill {
-			padding: 0.8em 1.8em;
-			border-radius: calc(infinity * 1px);
-		}
-
-		&.circle {
-			aspect-ratio: 1/1;
-			min-width: 3rem;
-			border-radius: calc(infinity * 1px);
-		}
 	}
 </style>
 
-<button class:list={["btn", theme, shape, size, className]} {...rest}>
+<label id={id} class:list={["toggle-btn group", theme, className]}>
+	<input type="checkbox" checked={checked} class="peer hidden" />
+
 	<slot />
-</button>
+</label>
